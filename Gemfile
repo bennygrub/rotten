@@ -7,7 +7,7 @@ group :development, :test do
    gem 'sqlite3'
 end
 group :production do
-  gem 'pg'
+  #gem 'pg'
   gem 'rails_12factor'
 end
 
@@ -49,3 +49,4 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 gem 'json'
+gem 'pry'

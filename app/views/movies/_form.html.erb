@@ -1,0 +1,93 @@
+<%= form_for(@movie) do |f| %>
+  <% if @movie.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
+
+      <ul>
+      <% @movie.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :rt_id %><br>
+    <%= f.number_field :rt_id %>
+  </div>
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_area :title %>
+  </div>
+  <div class="field">
+    <%= f.label :year %><br>
+    <%= f.number_field :year %>
+  </div>
+  <div class="field">
+    <%= f.label :mpaa_rating %><br>
+    <%= f.text_area :mpaa_rating %>
+  </div>
+  <div class="field">
+    <%= f.label :runtime %><br>
+    <%= f.number_field :runtime %>
+  </div>
+  <div class="field">
+    <%= f.label :critics_consensus %><br>
+    <%= f.text_area :critics_consensus %>
+  </div>
+  <div class="field">
+    <%= f.label :release_theater %><br>
+    <%= f.datetime_select :release_theater %>
+  </div>
+  <div class="field">
+    <%= f.label :release_dvd %><br>
+    <%= f.datetime_select :release_dvd %>
+  </div>
+  <div class="field">
+    <%= f.label :critics_rating %><br>
+    <%= f.text_area :critics_rating %>
+  </div>
+  <div class="field">
+    <%= f.label :critics_score %><br>
+    <%= f.number_field :critics_score %>
+  </div>
+  <div class="field">
+    <%= f.label :audience_rating %><br>
+    <%= f.text_area :audience_rating %>
+  </div>
+  <div class="field">
+    <%= f.label :audience_score %><br>
+    <%= f.number_field :audience_score %>
+  </div>
+  <div class="field">
+    <%= f.label :synopsis %><br>
+    <%= f.text_area :synopsis %>
+  </div>
+  <div class="field">
+    <%= f.label :poster_url %><br>
+    <%= f.text_area :poster_url %>
+  </div>
+  <div class="field">
+    <%= f.label :imdb %><br>
+    <%= f.number_field :imdb %>
+  </div>
+  <div class="field">
+    <%= f.label :rt_url %><br>
+    <%= f.text_area :rt_url %>
+  </div>
+  <div class="field">
+    <%= f.label :cast_url %><br>
+    <%= f.text_area :cast_url %>
+  </div>
+  <div class="field">
+    <%= f.label :review_url %><br>
+    <%= f.text_area :review_url %>
+  </div>
+  <div class="field">
+    <%= f.label :similar_url %><br>
+    <%= f.text_area :similar_url %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

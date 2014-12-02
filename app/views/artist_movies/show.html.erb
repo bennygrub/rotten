@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Artist:</strong>
+  <%= @artist_movie.artist_id %>
+</p>
+
+<p>
+  <strong>Movie:</strong>
+  <%= @artist_movie.movie_id %>
+</p>
+
+<%= link_to 'Edit', edit_artist_movie_path(@artist_movie) %> |
+<%= link_to 'Back', artist_movies_path %>

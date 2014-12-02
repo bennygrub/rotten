@@ -1,0 +1,63 @@
+<h1>Listing movies</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Rt</th>
+      <th>Title</th>
+      <th>Year</th>
+      <th>Mpaa rating</th>
+      <th>Runtime</th>
+      <th>Critics consensus</th>
+      <th>Release theater</th>
+      <th>Release dvd</th>
+      <th>Critics rating</th>
+      <th>Critics score</th>
+      <th>Audience rating</th>
+      <th>Audience score</th>
+      <th>Synopsis</th>
+      <th>Poster url</th>
+      <th>Imdb</th>
+      <th>Rt url</th>
+      <th>Cast url</th>
+      <th>Review url</th>
+      <th>Similar url</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @movies.each do |movie| %>
+      <tr>
+        <td><%= movie.rt_id %></td>
+        <td><%= movie.title %></td>
+        <td><%= movie.year %></td>
+        <td><%= movie.mpaa_rating %></td>
+        <td><%= movie.runtime %></td>
+        <td><%= movie.critics_consensus %></td>
+        <td><%= movie.release_theater %></td>
+        <td><%= movie.release_dvd %></td>
+        <td><%= movie.critics_rating %></td>
+        <td><%= movie.critics_score %></td>
+        <td><%= movie.audience_rating %></td>
+        <td><%= movie.audience_score %></td>
+        <td><%= movie.synopsis %></td>
+        <td><%= movie.poster_url %></td>
+        <td><%= movie.imdb %></td>
+        <td><%= movie.rt_url %></td>
+        <td><%= movie.cast_url %></td>
+        <td><%= movie.review_url %></td>
+        <td><%= movie.similar_url %></td>
+        <td><%= link_to 'Show', movie %></td>
+        <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
+        <td><%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Movie', new_movie_path %>

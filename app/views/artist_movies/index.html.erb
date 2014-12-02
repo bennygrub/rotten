@@ -1,0 +1,29 @@
+<h1>Listing artist_movies</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Artist</th>
+      <th>Movie</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @artist_movies.each do |artist_movie| %>
+      <tr>
+        <td><%= artist_movie.artist_id %></td>
+        <td><%= artist_movie.movie_id %></td>
+        <td><%= link_to 'Show', artist_movie %></td>
+        <td><%= link_to 'Edit', edit_artist_movie_path(artist_movie) %></td>
+        <td><%= link_to 'Destroy', artist_movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Artist movie', new_artist_movie_path %>
