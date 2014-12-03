@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Genre:</strong>
+  <%= @omdb_genre.genre_id %>
+</p>
+
+<p>
+  <strong>Omdb movie:</strong>
+  <%= @omdb_genre.omdb_movie_id %>
+</p>
+
+<%= link_to 'Edit', edit_omdb_genre_path(@omdb_genre) %> |
+<%= link_to 'Back', omdb_genres_path %>

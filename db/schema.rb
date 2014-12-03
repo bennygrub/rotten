@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141203175329) do
+ActiveRecord::Schema.define(version: 20141203203549) do
+
+  create_table "actors", force: true do |t|
+    t.text     "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "artist_movies", force: true do |t|
     t.integer  "artist_id"
@@ -30,6 +36,18 @@ ActiveRecord::Schema.define(version: 20141203175329) do
   create_table "characters", force: true do |t|
     t.integer  "artist_id"
     t.integer  "movie_id"
+    t.text     "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "directors", force: true do |t|
+    t.text     "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "genres", force: true do |t|
     t.text     "name"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -59,7 +77,60 @@ ActiveRecord::Schema.define(version: 20141203175329) do
     t.datetime "updated_at"
   end
 
+  create_table "omdb_actors", force: true do |t|
+    t.integer  "actor_id"
+    t.integer  "omdb_movie_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "omdb_directors", force: true do |t|
+    t.integer  "director_id"
+    t.integer  "omdb_movie_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "omdb_genres", force: true do |t|
+    t.integer  "genre_id"
+    t.integer  "omdb_movie_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "omdb_movies", force: true do |t|
+    t.text     "imdb"
+    t.text     "title"
+    t.integer  "year"
+    t.text     "rated"
+    t.datetime "released"
+    t.integer  "runtime"
+    t.text     "plot"
+    t.text     "language"
+    t.text     "country"
+    t.text     "awards"
+    t.integer  "metascore"
+    t.float    "imdb_rating"
+    t.integer  "imdb_votes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "omdb_writers", force: true do |t|
+    t.integer  "writer_id"
+    t.integer  "omdb_movie_id"
+    t.text     "role"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "titles", force: true do |t|
+    t.text     "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "writers", force: true do |t|
     t.text     "name"
     t.datetime "created_at"
     t.datetime "updated_at"

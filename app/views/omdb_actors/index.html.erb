@@ -1,0 +1,29 @@
+<h1>Listing omdb_actors</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Actor</th>
+      <th>Omdb movie</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @omdb_actors.each do |omdb_actor| %>
+      <tr>
+        <td><%= omdb_actor.actor_id %></td>
+        <td><%= omdb_actor.omdb_movie_id %></td>
+        <td><%= link_to 'Show', omdb_actor %></td>
+        <td><%= link_to 'Edit', edit_omdb_actor_path(omdb_actor) %></td>
+        <td><%= link_to 'Destroy', omdb_actor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Omdb actor', new_omdb_actor_path %>

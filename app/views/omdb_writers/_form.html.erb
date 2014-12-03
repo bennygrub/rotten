@@ -1,0 +1,29 @@
+<%= form_for(@omdb_writer) do |f| %>
+  <% if @omdb_writer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@omdb_writer.errors.count, "error") %> prohibited this omdb_writer from being saved:</h2>
+
+      <ul>
+      <% @omdb_writer.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :writer_id %><br>
+    <%= f.number_field :writer_id %>
+  </div>
+  <div class="field">
+    <%= f.label :omdb_movie_id %><br>
+    <%= f.number_field :omdb_movie_id %>
+  </div>
+  <div class="field">
+    <%= f.label :role %><br>
+    <%= f.text_area :role %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

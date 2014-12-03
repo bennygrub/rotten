@@ -1,0 +1,29 @@
+<h1>Listing omdb_genres</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Genre</th>
+      <th>Omdb movie</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @omdb_genres.each do |omdb_genre| %>
+      <tr>
+        <td><%= omdb_genre.genre_id %></td>
+        <td><%= omdb_genre.omdb_movie_id %></td>
+        <td><%= link_to 'Show', omdb_genre %></td>
+        <td><%= link_to 'Edit', edit_omdb_genre_path(omdb_genre) %></td>
+        <td><%= link_to 'Destroy', omdb_genre, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Omdb genre', new_omdb_genre_path %>

@@ -1,0 +1,51 @@
+<h1>Listing omdb_movies</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Imdb</th>
+      <th>Title</th>
+      <th>Year</th>
+      <th>Rated</th>
+      <th>Released</th>
+      <th>Runtime</th>
+      <th>Plot</th>
+      <th>Language</th>
+      <th>Country</th>
+      <th>Awards</th>
+      <th>Metascore</th>
+      <th>Imdb rating</th>
+      <th>Imdb votes</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @omdb_movies.each do |omdb_movie| %>
+      <tr>
+        <td><%= omdb_movie.imdb %></td>
+        <td><%= omdb_movie.title %></td>
+        <td><%= omdb_movie.year %></td>
+        <td><%= omdb_movie.rated %></td>
+        <td><%= omdb_movie.released %></td>
+        <td><%= omdb_movie.runtime %></td>
+        <td><%= omdb_movie.plot %></td>
+        <td><%= omdb_movie.language %></td>
+        <td><%= omdb_movie.country %></td>
+        <td><%= omdb_movie.awards %></td>
+        <td><%= omdb_movie.metascore %></td>
+        <td><%= omdb_movie.imdb_rating %></td>
+        <td><%= omdb_movie.imdb_votes %></td>
+        <td><%= link_to 'Show', omdb_movie %></td>
+        <td><%= link_to 'Edit', edit_omdb_movie_path(omdb_movie) %></td>
+        <td><%= link_to 'Destroy', omdb_movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Omdb movie', new_omdb_movie_path %>

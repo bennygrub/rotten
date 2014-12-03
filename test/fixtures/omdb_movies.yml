@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  imdb: MyText
+  title: MyText
+  year: 1
+  rated: MyText
+  released: 2014-12-03 15:29:32
+  runtime: 1
+  plot: MyText
+  language: MyText
+  country: MyText
+  awards: MyText
+  metascore: 1
+  imdb_rating: 1.5
+  imdb_votes: 1
+
+two:
+  imdb: MyText
+  title: MyText
+  year: 1
+  rated: MyText
+  released: 2014-12-03 15:29:32
+  runtime: 1
+  plot: MyText
+  language: MyText
+  country: MyText
+  awards: MyText
+  metascore: 1
+  imdb_rating: 1.5
+  imdb_votes: 1

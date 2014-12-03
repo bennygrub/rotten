@@ -1,0 +1,29 @@
+<h1>Listing omdb_directors</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Director</th>
+      <th>Omdb movie</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @omdb_directors.each do |omdb_director| %>
+      <tr>
+        <td><%= omdb_director.director_id %></td>
+        <td><%= omdb_director.omdb_movie_id %></td>
+        <td><%= link_to 'Show', omdb_director %></td>
+        <td><%= link_to 'Edit', edit_omdb_director_path(omdb_director) %></td>
+        <td><%= link_to 'Destroy', omdb_director, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Omdb director', new_omdb_director_path %>

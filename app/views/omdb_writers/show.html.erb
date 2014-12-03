@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Writer:</strong>
+  <%= @omdb_writer.writer_id %>
+</p>
+
+<p>
+  <strong>Omdb movie:</strong>
+  <%= @omdb_writer.omdb_movie_id %>
+</p>
+
+<p>
+  <strong>Role:</strong>
+  <%= @omdb_writer.role %>
+</p>
+
+<%= link_to 'Edit', edit_omdb_writer_path(@omdb_writer) %> |
+<%= link_to 'Back', omdb_writers_path %>

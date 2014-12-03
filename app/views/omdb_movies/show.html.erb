@@ -1,0 +1,69 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Imdb:</strong>
+  <%= @omdb_movie.imdb %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @omdb_movie.title %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @omdb_movie.year %>
+</p>
+
+<p>
+  <strong>Rated:</strong>
+  <%= @omdb_movie.rated %>
+</p>
+
+<p>
+  <strong>Released:</strong>
+  <%= @omdb_movie.released %>
+</p>
+
+<p>
+  <strong>Runtime:</strong>
+  <%= @omdb_movie.runtime %>
+</p>
+
+<p>
+  <strong>Plot:</strong>
+  <%= @omdb_movie.plot %>
+</p>
+
+<p>
+  <strong>Language:</strong>
+  <%= @omdb_movie.language %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @omdb_movie.country %>
+</p>
+
+<p>
+  <strong>Awards:</strong>
+  <%= @omdb_movie.awards %>
+</p>
+
+<p>
+  <strong>Metascore:</strong>
+  <%= @omdb_movie.metascore %>
+</p>
+
+<p>
+  <strong>Imdb rating:</strong>
+  <%= @omdb_movie.imdb_rating %>
+</p>
+
+<p>
+  <strong>Imdb votes:</strong>
+  <%= @omdb_movie.imdb_votes %>
+</p>
+
+<%= link_to 'Edit', edit_omdb_movie_path(@omdb_movie) %> |
+<%= link_to 'Back', omdb_movies_path %>

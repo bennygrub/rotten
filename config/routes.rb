@@ -1,4 +1,22 @@
 Rotten::Application.routes.draw do
+  resources :omdb_writers
+
+  resources :omdb_directors
+
+  resources :omdb_actors
+
+  resources :omdb_genres
+
+  resources :writers
+
+  resources :directors
+
+  resources :actors
+
+  resources :genres
+
+  resources :omdb_movies
+
   resources :titles
 
   resources :artist_movies

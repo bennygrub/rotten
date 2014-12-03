@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Director:</strong>
+  <%= @omdb_director.director_id %>
+</p>
+
+<p>
+  <strong>Omdb movie:</strong>
+  <%= @omdb_director.omdb_movie_id %>
+</p>
+
+<%= link_to 'Edit', edit_omdb_director_path(@omdb_director) %> |
+<%= link_to 'Back', omdb_directors_path %>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  writer_id: 1
+  omdb_movie_id: 1
+  role: MyText
+
+two:
+  writer_id: 1
+  omdb_movie_id: 1
+  role: MyText

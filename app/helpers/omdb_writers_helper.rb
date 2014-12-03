@@ -1,0 +1,2 @@
+module OmdbWritersHelper
+end
