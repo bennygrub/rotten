@@ -11,6 +11,7 @@ class CreateOmdbMovies < ActiveRecord::Migration
       t.text :language
       t.text :country
       t.text :awards
+      t.text :poster
       t.integer :metascore
       t.float :imdb_rating
       t.integer :imdb_votes

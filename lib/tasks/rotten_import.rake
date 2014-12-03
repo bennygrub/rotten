@@ -2,7 +2,7 @@ desc "Import Rotten Tomatoes"
 task :rotten_import => :environment do
   require 'net/http'
   require 'json'
-  Title.limit(9).find_each(:batch_size => 10000) do |unit|
+  Title.find_each(:batch_size => 10000) do |unit|
     name = URI.encode(unit.name)
     url = URI.parse("http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=p4a9amhrxdchfyajehnnx3k2&q=#{name}&page_limit=1")
     req = Net::HTTP::Get.new(url.to_s)
@@ -60,7 +60,7 @@ task :omdb_import => :environment do
   require 'net/http'
   require 'json'
 
-  Movie.limit(7).find_each(:batch_size => 10000) do |unit|
+  Movie.find_each(:batch_size => 10000) do |unit|
     imdb = URI.encode("tt#{unit.imdb}")
     url = URI.parse("http://www.omdbapi.com/?i=#{imdb}&plot=full&r=json")
     req = Net::HTTP::Get.new(url.to_s)
@@ -70,23 +70,28 @@ task :omdb_import => :environment do
     
     j["Genre"].split(", ").each do |g|
         genre = Genre.where(name: g).first_or_create(name: g)
-        OmdbGenre.where(genre_id: genre.id, omdb_movie_id: omdb.id).first_or_create(genre_id: genre.id, omdb_movie_id: omdb.id)
+        OmdbGenre.where("genre_id = ? AND omdb_movie_id = ?", genre.id, omdb.id).first_or_create(genre_id: genre.id, omdb_movie_id: omdb.id)
     end
 
     j["Actors"].split(", ").each do |g|
         actor = Actor.where(name: g).first_or_create(name: g)
-        OmdbActor.where(actor_id: actor.id, omdb_movie_id: omdb.id).first_or_create(actor_id: actor.id, omdb_movie_id: omdb.id)
+        OmdbActor.where("actor_id = ? AND omdb_movie_id = ?", actor.id, omdb.id).first_or_create(actor_id: actor.id, omdb_movie_id: omdb.id)
     end
 
     j["Director"].split(", ").each do |g|
         director = Director.where(name: g).first_or_create(name: g)
-        OmdbDirector.where(director_id: director.id,omdb_movie_id: omdb.id).first_or_create(director_id: director.id, omdb_movie_id: omdb.id)
+        OmdbDirector.where("director_id = ? AND omdb_movie_id = ?", director.id, omdb.id).first_or_create(director_id: director.id, omdb_movie_id: omdb.id)
     end
 
     j["Writer"].split(", ").each do |g|
-        role = j["Writer"].split(", ").first.scan(/\((.*?)\)/).first.first
-        writer = Writer.where("name = ? AND role = ?", g, role).first_or_create(name: g, role: role)
-        OmdbWriter.where(writer_id: writer.id, omdb_movie_id: omdb.id).first_or_create(writer_id: writer.id, omdb_movie_id: omdb.id)
+        if g.scan(/\((.*?)\)/).count > 0
+            role = g.scan(/\((.*?)\)/).first.first
+            name = g.scan(/(.*)\(/).first.first.strip
+        else
+            name = g
+        end
+        writer = Writer.where("name = ?", name).first_or_create(name: name)
+        OmdbWriter.where("writer_id = ? AND omdb_movie_id = ? AND role = ?", writer.id, omdb.id, role).first_or_create(writer_id: writer.id, omdb_movie_id: omdb.id, role: role)
     end
   end
 end
