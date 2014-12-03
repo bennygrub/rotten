@@ -1,4 +1,6 @@
 Rotten::Application.routes.draw do
+  resources :titles
+
   resources :artist_movies
 
   resources :characters
