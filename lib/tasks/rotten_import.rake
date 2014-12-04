@@ -69,7 +69,7 @@ task :omdb_import => :environment do
   require 'json'
 
   #Movie.find_each(:batch_size => 100) do |unit|
-  units = (4246..20000).to_a
+  units = (4254..20000).to_a
   units.each do |unit|
     movie = Movie.find(unit)
     imdb = URI.encode("tt#{movie.imdb}")
