@@ -2,7 +2,7 @@ desc "Import Rotten Tomatoes"
 task :rotten_import => :environment do
   require 'net/http'
   require 'json'
-  Title.find_each(:conditions => "id > 5172", :batch_size => 100) do |unit|
+  Title.find_each(:conditions => "id > 6092", :batch_size => 100) do |unit|
     #Ansul n4su6dc9gc8rd7ajp8r47x3j
     #Ben p4a9amhrxdchfyajehnnx3k2
     name = URI.encode(unit.name)
@@ -62,7 +62,7 @@ task :omdb_import => :environment do
   require 'net/http'
   require 'json'
 
-  Movie.find_each(:conditions => "id > 3001", :batch_size => 100) do |unit|
+  Movie.find_each(:conditions => "id > 4245", :batch_size => 100) do |unit|
     imdb = URI.encode("tt#{unit.imdb}")
     url = URI.parse("http://www.omdbapi.com/?i=#{imdb}&plot=full&r=json")
     req = Net::HTTP::Get.new(url.to_s)
