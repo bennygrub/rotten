@@ -4,7 +4,7 @@ task :rotten_import => :environment do
   require 'json'
     #Ansul n4su6dc9gc8rd7ajp8r47x3j
     #Ben p4a9amhrxdchfyajehnnx3k2
-  units = [6092..20000]
+  units = (6092..20000).to_a
   units.each do |unit|      
     title = Title.find(unit)
     name = URI.encode(title.name)
