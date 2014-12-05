@@ -155,6 +155,8 @@ task :omdb_import_by_title => :environment do
                 OmdbWriter.where("writer_id = ? AND omdb_movie_id = ? AND role = ?", writer.id, omdb.id, role).first_or_create(writer_id: writer.id, omdb_movie_id: omdb.id, role: role)
             end
         end
+    rescue
+
     end
   end
 end
