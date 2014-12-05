@@ -124,7 +124,7 @@ task :omdb_import_by_title => :environment do
         req = Net::HTTP::Get.new(url.to_s)
         res = Net::HTTP.start(url.host, url.port) {|http|http.request(req)}
         j = JSON.parse(res.body)
-        omdb = OmdbMovie.where(title: j["Title"]).first_or_create(imdb: imdb, title: j["Title"], year: j["Year"].to_i, rated: j["Rated"], released: j["Released"], runtime: j["Runtime"].to_i, plot: j["Plot"], poster: j["Poster"], language: j["Language"], country: j["Country"], awards: j["Awards"], metascore: j["Metascore"].to_i, imdb_rating: j["imdbRating"].to_f, imdb_votes: j["imdbVotes"].to_i)
+        omdb = OmdbMovie.where(title: j["Title"]).first_or_create(imdb: j["imdbID"], title: j["Title"], year: j["Year"].to_i, rated: j["Rated"], released: j["Released"], runtime: j["Runtime"].to_i, plot: j["Plot"], poster: j["Poster"], language: j["Language"], country: j["Country"], awards: j["Awards"], metascore: j["Metascore"].to_i, imdb_rating: j["imdbRating"].to_f, imdb_votes: j["imdbVotes"].to_i,)
         if !j["Genre"].blank?
             j["Genre"].split(", ").each do |g|
                 genre = Genre.where(name: g).first_or_create(name: g)
