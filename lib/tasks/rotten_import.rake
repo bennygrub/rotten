@@ -4,11 +4,14 @@ task :rotten_import => :environment do
   require 'json'
     #Ansul n4su6dc9gc8rd7ajp8r47x3j
     #Ben p4a9amhrxdchfyajehnnx3k2
-  units = (6092..20000).to_a
+    #other
+  #units = (6093..20000).to_a
+  units = (6093..16000).to_a
   units.each do |unit|      
     title = Title.find(unit)
+
     name = URI.encode(title.name)
-    url = URI.parse("http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=p4a9amhrxdchfyajehnnx3k2=#{name}&page_limit=1")
+    url = URI.parse("http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=bxwy5j49twbtuknssacyqk4p=#{name}&page_limit=1")
     req = Net::HTTP::Get.new(url.to_s)
     res = Net::HTTP.start(url.host, url.port) {|http|http.request(req)}
     j = JSON.parse(res.body)
