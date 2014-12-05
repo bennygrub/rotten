@@ -7,9 +7,9 @@ task :rotten_import => :environment do
     #other bxwy5j49twbtuknssacyqk4p
   #units = (6093..20000).to_a
   #units = (6093..16000).to_a6386
-  Title.where("id > ?", 7000).find_each(:batch_size => 1000) do |unit|      
+  Title.where("id > ?", 24166).find_each(:batch_size => 1000) do |unit|      
     name = URI.encode(unit.name)
-    url = URI.parse("http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=bxwy5j49twbtuknssacyqk4p&q=#{name}&page_limit=1")
+    url = URI.parse("http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=p4a9amhrxdchfyajehnnx3k2&q=#{name}&page_limit=1")
     req = Net::HTTP::Get.new(url.to_s)
     res = Net::HTTP.start(url.host, url.port) {|http|http.request(req)}
     j = JSON.parse(res.body)
