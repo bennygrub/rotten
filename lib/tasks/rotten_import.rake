@@ -117,7 +117,7 @@ task :omdb_import_by_title => :environment do
   require 'net/http'
   require 'json'
 
-  Title.find_each(:batch_size => 100) do |unit|
+  Title.where("id > ?", 1000).find_each(:batch_size => 1000) do |unit|
     name = URI.encode(unit.name)
     url = URI.parse("http://www.omdbapi.com/?t=#{name}&plot=full&r=json")
     begin
