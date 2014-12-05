@@ -166,3 +166,6 @@ task :omdb_import_by_title => :environment do
     end
   end
 end
+task :export_actors => :environment do
+    User.copy_to '/public/actors.csv'
+end

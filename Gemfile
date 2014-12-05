@@ -50,3 +50,4 @@ end
 # gem 'debugger', group: [:development, :test]
 gem 'json'
 gem 'pry'
+gem 'postgres-copy'
