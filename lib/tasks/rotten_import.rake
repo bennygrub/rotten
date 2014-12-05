@@ -8,7 +8,7 @@ task :rotten_import => :environment do
   #units = (6093..20000).to_a
   #units = (6093..16000).to_a6386
   Title.find_each(:batch_size => 1000) do |unit|      
-    if !Movie.find_by_title(unit.name).nil?
+    if Movie.find_by_title(unit.name).nil?
         name = URI.encode(unit.name)
         url = URI.parse("http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=n4su6dc9gc8rd7ajp8r47x3j&q=#{name}&page_limit=1")
         req = Net::HTTP::Get.new(url.to_s)
@@ -118,7 +118,7 @@ task :omdb_import_by_title => :environment do
   require 'json'
 
   Title.find_each(:batch_size => 1000) do |unit|
-    if !OmdbMovie.find_by_title(unit.name).nil?
+    if OmdbMovie.find_by_title(unit.name).nil?
         name = URI.encode(unit.name)
         url = URI.parse("http://www.omdbapi.com/?t=#{name}&plot=full&r=json")
         begin
