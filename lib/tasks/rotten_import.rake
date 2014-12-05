@@ -72,8 +72,8 @@ task :omdb_import => :environment do
   require 'json'
 
   Movie.find_each(:batch_size => 1000) do |unit|
-    if OmdbMovie.find_by_title(unit.name).nil?
-        movie = Movie.find(unit)
+    if OmdbMovie.find_by_title(unit.title).nil?
+        movie = Movie.find(unit.imdb)
         imdb = URI.encode("tt#{movie.imdb}")
         url = URI.parse("http://www.omdbapi.com/?i=#{imdb}&plot=full&r=json")
         req = Net::HTTP::Get.new(url.to_s)
@@ -118,8 +118,8 @@ task :omdb_import_by_title => :environment do
   require 'json'
 
   Title.find_each(:batch_size => 1000) do |unit|
-    if OmdbMovie.find_by_title(unit.title).nil?
-        name = URI.encode(unit.title)
+    if OmdbMovie.find_by_title(unit.name).nil?
+        name = URI.encode(unit.name)
         url = URI.parse("http://www.omdbapi.com/?t=#{name}&plot=full&r=json")
         begin
             req = Net::HTTP::Get.new(url.to_s)
