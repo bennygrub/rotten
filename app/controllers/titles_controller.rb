@@ -4,7 +4,11 @@ class TitlesController < ApplicationController
   # GET /titles
   # GET /titles.json
   def index
-    @titles = Title.all
+    @titles = Title.all if params[:chunk] == all
+    @titles = Title.limit(10000) if params[:chunk] == 1
+    if params[:chunk] > 1
+      @titles = Title.offset(params[:chunk]).limit(10000) if params[:chunk] == params[:chunk]
+    end
   end
 
   # GET /titles/1
