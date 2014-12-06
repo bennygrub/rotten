@@ -8,7 +8,8 @@ class TitlesController < ApplicationController
     @titles = Title.all.limit(10000) if params[:chunk] == 1
     if params[:chunk]
       if params[:chunk].to_i > 1
-        @titles = Title.all.offset(params[:chunk]).limit(10000) if params[:chunk] == params[:chunk]
+        off = params[:chunk].to_i
+        @titles = Title.all.offset(off).limit(10000) if params[:chunk] == params[:chunk]
       end
     end
   end
